@@ -5,7 +5,7 @@
 
 ## 前言
 
-本項目是對 flier268 的 ConvertZZ 的繼續維護。
+本項目是對 flier268 的 [ConvertZZ](https://github.com/flier268/ConvertZZ) 項目的繼續維護。
 
 重點更新內容：
 
