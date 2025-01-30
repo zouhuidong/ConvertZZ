@@ -21,9 +21,8 @@ ConvertZ 本身並不開源，故而 flier268 用 C# 完全重新寫了 [Convert
 
 但現在 ConvertZZ 也不再爲原作者所維護了，最後一個發佈版本停留在 2019 年。
 
-本項目基於 ConvertZZ v1.0.0.8 繼續進行不定期維護，將新增若干功能
+本項目基於 ConvertZZ v1.0.0.8 繼續進行不定期維護，將新增若干功能，但不一定能夠一一回覆每個 issue，請見諒！
 
 ## 贊助
 
-<img src="http://huidong-x-xyz.img.addlink.cn/upload/image/20250130/1738208932716565.jpeg" style="width: 480px; height: 653px;" width="480" height="653" border="0" vspace="0"/>
-<img src="http://huidong-x-xyz.img.addlink.cn/upload/image/20250130/1738208927100724.png" style="width: 480px; height: 747px;" width="480" height="747" border="0" vspace="0"/>
+[贊助鏈接](http://huidong.xyz/article.php?blog_id=1) 
