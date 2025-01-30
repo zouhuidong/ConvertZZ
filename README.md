@@ -32,7 +32,7 @@ ConvertZZ 是一款 Windows 上的簡繁轉換工具，原作者 flier268，前�
 
 ## ConvertZ 的故事
 
-「ConvertZ」是一款 Windows 上的簡繁轉換工具，作者李志成，以其功能多樣、簡潔實用而頗有名氣，但該軟件已有十餘年未有更新，最後一個版本是 V8.02。
+「ConvertZ」是一款 Windows 上的簡繁轉換工具，作者李志成，以其功能多樣、簡潔實用而頗有名氣，但該軟件已有二十年未有更新，最後一個版本是 V8.02（2005 年發佈）。
 
 ConvertZ 本身並不開源，爲修正 ConvertZ 的 bug，flier268 用 C# 重新寫了 [ConvertZZ](https://github.com/flier268/ConvertZZ)，修復了 ConvertZ 的若干 bug，實現了 ConvertZZ 90% 的功能，並開源了代碼。 
 
