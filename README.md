@@ -60,15 +60,9 @@ ConvertZZ 自帶的詞典轉換不夠專業，轉換的問題不少（見 Conver
 
 您若需要臺灣用字轉換，就選取 `s2tw.json` 作爲 Unicode 簡轉繁的配置文件，`tw2s.json` 作爲繁轉簡的配置文件，至於其他地區用字，自可知之矣。
 
-## 贊助我
+## 贊助原作者
 
-用家若感不錯，不妨贊助一下我，或者贊助一下原作者。
+用家若感不錯，不妨贊助一下原作者。
 
-[贊助我](http://huidong.xyz/article.php?blog_id=1) （微信、支付寶）
-
-贊助原作者：
 * [Paypal](http://paypal.me/flier268)(台灣以外地區)
 * [街口支付](https://i.imgur.com/IKowON0.png)(台灣地區)
-
-
-
