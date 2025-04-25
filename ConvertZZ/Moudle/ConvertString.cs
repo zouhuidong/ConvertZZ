@@ -14,6 +14,11 @@ namespace ConvertZZ.Moudle
 {
     public class ConvertHelper
     {
+        // opencc 轉換實例
+        static OpenCCConverter convOpencc2Simp = new OpenCCConverter();
+        static OpenCCConverter convOpencc2Trad = new OpenCCConverter();
+        static string strOld2Simp, strOld2Trad;
+
         /// <summary>
         /// 轉換文字
         /// </summary>
@@ -49,28 +54,62 @@ namespace ConvertZZ.Moudle
                     }
                     return origin;
                 }
+
+                // OpenCC 轉換引擎
                 else if (App.Settings.Engine == Enum_Engine.OpenCC)
                 {
+                    // 不轉換的情況，單獨處理
+                    if (ToChinese == 0)
+                    {
+                        return origin;
+                    }
+
+                    // 轉換結果
                     string strConverted;
+                    
+                    // 讀取配置文件路徑
                     string strJsonPath = ToChinese == 1 ?
                         App.Settings.OpenCC_Setting.PathJson_ToTrad : App.Settings.OpenCC_Setting.PathJson_ToSimp;
-                    OpenCCConverter conv = new OpenCCConverter();
+
+                    // 上一次的配置文件路徑
+                    // 注意：此處的 string 變量雖然是引用，但是 string 是不可變的引用類型，修改 strOldPath 不會延續到 strOld2Simp 或者 strOld2Trad。
+                    string strOldPath = ToChinese == 1 ? strOld2Trad : strOld2Simp;
+
+                    // 本次應該使用的 OpenCC 實例
+                    OpenCCConverter convOpenCC = ToChinese == 1 ? convOpencc2Trad : convOpencc2Simp;
+
                     if (strJsonPath == null)
                     {
                         MessageBox.Show("OpenCC 配置文件爲 null", "Warning");
                     }
-                    if (conv.Open(strJsonPath) == IntPtr.Zero)
+
+                    // 配置文件若有更新，則重新打開 OpenCC
+                    // 由於 old_path 初始爲空串，因此開啓程序後第一次執行簡繁轉換，也會出發 OpenCC 在此處開啓
+                    if (strOldPath != strJsonPath)
                     {
-                        MessageBox.Show(conv.Error(), "OpenCC Open Error");
+                        // 已開啓 opencc 實例的情況下將其關閉
+                        if (convOpenCC.IsOpen() && convOpenCC.Close() != 0)
+                        {
+                            MessageBox.Show(convOpenCC.Error(), "OpenCC Close Error");
+                        }
+
+                        // 開啓 OpenCC
+                        if (!convOpenCC.Open(strJsonPath))
+                        {
+                            MessageBox.Show(convOpenCC.Error(), "OpenCC Open Error");
+                        }
+
+                        // 更新 OldPath
+                        if (ToChinese == 1)     strOld2Trad = strJsonPath;
+                        else                    strOld2Simp = strJsonPath;
                     }
-                    if (!conv.Convert(origin, out strConverted))
+
+                    // 實際進行轉換
+                    if (!convOpenCC.Convert(origin, out strConverted))
                     {
-                        MessageBox.Show(conv.Error(), "OpenCC Convert Error");
+                        MessageBox.Show(convOpenCC.Error(), "OpenCC Convert Error");
                     }
-                    if (conv.Close() != 0)
-                    {
-                        MessageBox.Show(conv.Error(), "OpenCC Close Error");
-                    }
+                    
                     return strConverted;
                 }
                 else if (App.Settings.Engine == Enum_Engine.Fanhuaji)

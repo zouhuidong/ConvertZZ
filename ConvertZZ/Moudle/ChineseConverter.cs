@@ -158,8 +158,8 @@ namespace ConvertZZ
         /// 開啓 OpenCC
         /// </summary>
         /// <param name="configFileName">OpenCC 配置文件名（例如 "s2t.json"）</param>
-        /// <returns>OpenCC 描述指針（若爲空指針，說明開啓 OpenCC 失敗，請使用 Error 函數獲取錯誤信息）</returns>
-        public IntPtr Open(string configFileName)
+        /// <returns>是否成功開啓 OpenCC。如果開啓 OpenCC 失敗，請使用 Error 函數獲取錯誤信息。</returns>
+        public Boolean Open(string configFileName)
         {
             // open
             IntPtr pStr_configfile = Marshal.StringToHGlobalAnsi(configFileName);
@@ -171,7 +171,18 @@ namespace ConvertZZ
             {
                 Marshal.FreeHGlobal(pStr_configfile);
             }
-            return ptrOpencc;
+
+            return IsOpen();
+        }
+
+        /// <summary>
+        /// 判斷 OpenCC 是否已經開啓
+        /// </summary>
+        /// <returns>已經開啓返回 True，否則返回 False</returns>
+        public Boolean IsOpen()
+        {
+            /* OpenCC 實際上規定 Open 失敗時返回的是 (void*)-1 */
+            return ptrOpencc != IntPtr.Zero && ptrOpencc != IntPtr.Zero - 1;
         }
 
         /// <summary>

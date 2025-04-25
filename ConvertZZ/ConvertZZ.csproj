@@ -5,7 +5,7 @@
     <TargetFramework>net472</TargetFramework>
     <UseWPF>true</UseWPF>
     <Copyright>Copyright © flier268 2019</Copyright>
-    <Version>1.0.1.0</Version>
+    <Version>1.0.1.1</Version>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PlatformTarget>x64</PlatformTarget>
     <Authors>$(AssemblyName)</Authors>
@@ -83,6 +83,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="STPhrases.ocd2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="t2s.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TSCharacters.ocd2">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TSPhrases.ocd2">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
